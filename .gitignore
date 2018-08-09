@@ -5,4 +5,4 @@ npm-debug.log
 build
 .idea
 .vscode
-./dist
+dist
