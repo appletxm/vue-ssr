@@ -1,7 +1,9 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+// const autoprefixer = require('autoprefixer')
 
-let envKeyWord = 'development'
+let envKeyWord = process.env.NODE_ENV
 
 module.exports = {
   mode: envKeyWord,

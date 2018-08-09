@@ -3,8 +3,8 @@ const path = require('path')
 const MFS = require('memory-fs')
 const webpack = require('webpack')
 const chokidar = require('chokidar')
-const clientConfig = require('./webpack.client.config')
-const serverConfig = require('./webpack.server.config')
+const clientConfig = require('../config/webpack.cfg.client')
+const serverConfig = require('../config/webpack.cfg.server')
 
 const readFile = (fs, file) => {
   try {
@@ -12,12 +12,12 @@ const readFile = (fs, file) => {
   } catch (e) {}
 }
 
-module.exports = function setupDevServer (app, templatePath, cb) {
+module.exports = (app, templatePath, cb) =>{
   let bundle
   let template
   let clientManifest
-
   let ready
+
   const readyPromise = new Promise(r => { ready = r })
   const update = () => {
     if (bundle && clientManifest) {
@@ -38,7 +38,7 @@ module.exports = function setupDevServer (app, templatePath, cb) {
   })
 
   // modify client config to work with hot middleware
-  clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app]
+  clientConfig.entry.app = ['webpack-hot-middleware/client?overlay=true', clientConfig.entry.app]
   clientConfig.output.filename = '[name].js'
   clientConfig.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
@@ -65,7 +65,7 @@ module.exports = function setupDevServer (app, templatePath, cb) {
   })
 
   // hot middleware
-  app.use(require('webpack-hot-middleware')(clientCompiler, { heartbeat: 5000 }))
+  app.use(require('webpack-hot-middleware')(clientCompiler, { heartbeat: 5000, reload: true }))
 
   // watch and update server renderer
   const serverCompiler = webpack(serverConfig)

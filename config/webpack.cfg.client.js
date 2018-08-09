@@ -2,8 +2,6 @@ const merge = require('webpack-merge')
 const baseConfig = require('./webpack.cfg.base.js')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 const path = require('path')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-// const autoprefixer = require('autoprefixer')
 
 module.exports = merge(baseConfig, {
   entry: {
