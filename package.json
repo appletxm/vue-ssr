@@ -4,7 +4,7 @@
   "description": "just test vuejs server side render with nodejs and webpack",
   "main": "./src/js/app.js",
   "scripts": {
-    "start": "node ./scripts/server.js",
+    "start": "node ./scripts/server.js development",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "webpack --config config/webpack.cfg.client.js --progress --hide-modules",
     "build:server": "webpack --config config/webpack.cfg.server.js --progress --hide-modules"

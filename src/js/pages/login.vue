@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import List from '../components/list.vue'
-import Item from '../components/item.vue'
+import List from 'components/list.vue'
+import Item from 'components/item.vue'
 
 export default {
   data () {
@@ -17,6 +17,9 @@ export default {
     }
   },
   computed: {},
-  comments:{List, Item}
+  comments:{List, Item},
+  mounted(){
+    console.info('my login page lauched success')
+  }
 }
 </script>

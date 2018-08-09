@@ -1,5 +1,5 @@
 <template>
-  <div>{{ a }} | {{ b }}</div>
+  <div class="component-tab">{{ a }} | {{ b }}</div>
 </template>
 
 <script>
