@@ -17,7 +17,7 @@ export default {
     }
   },
   computed: {},
-  comments:{List, Item},
+  components:{List, Item},
   mounted(){
     console.info('my login page lauched success')
   }

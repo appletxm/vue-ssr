@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(item, index) in list" v-bind:key="index">itme: {{a}}</li>
+    <li v-for="(item, index) in list" v-bind:key="index">itme: {{item.a}}</li>
   </ul>
 </template>
 
@@ -17,9 +17,7 @@
         ]
       }
     },
-    mounted() {
-      console.info('init list component--------------')
-    }
+    mounted() {}
   }
 
 </script>

@@ -18,20 +18,18 @@ export function createStore () {
         // })
 
         setTimeout(()=>{
-          commit('setItem', { 
-            id: '12345678', 
-            item:[
-              {
-              no: '1',
-              name: '2222'
-            }
-          ] })
+          commit('setItem', [
+            {
+            no: '1',
+            name: '2222'
+          }])
         }, 1000)
       }
     },
     mutations: {
-      setItem (state, { id, item }) {
-        Vue.set(state.items, id, item)
+      setItem (state, items) {
+        console.info('====3333===', state)
+        state.items = items
       }
     }
   })

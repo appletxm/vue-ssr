@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const LRU = require('lru-cache')
 const setupDevServer = require('./server-hot')
 const { createBundleRenderer } = require('vue-server-renderer')
 const resolve = file => path.resolve(__dirname, file)
@@ -48,10 +49,10 @@ function render (req, res) {
 function createMyRender (bundle, options) {
   return createBundleRenderer(bundle, Object.assign(options, {
     // for component caching
-    // cache: LRU({
-    //   max: 1000,
-    //   maxAge: 1000 * 60 * 15
-    // }),
+    cache: LRU({
+      max: 1000,
+      maxAge: 1000 * 60 * 15
+    }),
     basedir: resolve('../dist'),
     runInNewContext: false
   }))

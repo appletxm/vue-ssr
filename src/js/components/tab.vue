@@ -10,8 +10,6 @@ export default {
       b: 'ok'
     }
   },
-  mounted() {
-    console.info('init tab component======')
-  }
+  mounted() {}
 }
 </script>
