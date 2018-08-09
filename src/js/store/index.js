@@ -16,11 +16,22 @@ export function createStore () {
         // return fetchItem(id).then(item => {
         //   commit('setItem', { id, item })
         // })
+
+        setTimeout(()=>{
+          commit('setItem', { 
+            id: '12345678', 
+            item:[
+              {
+              no: '1',
+              name: '2222'
+            }
+          ] })
+        }, 1000)
       }
     },
     mutations: {
       setItem (state, { id, item }) {
-        // Vue.set(state.items, id, item)
+        Vue.set(state.items, id, item)
       }
     }
   })

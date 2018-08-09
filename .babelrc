@@ -13,5 +13,13 @@
         }
       }
     ]
-  ]
+  ],
+  "plugins": [
+    "syntax-dynamic-import"
+  ],
+  "env": {
+    "test": {},
+    "development": {},
+    "mock": {}
+  }
 }
