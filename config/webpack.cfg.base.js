@@ -1,5 +1,6 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const CopyPlugin = require('copy-webpack-plugin')
 const envCfg = require('./en.cfg.development')
 const webpackCfgFn = require('./webpack.cfg.fn')
 
@@ -29,7 +30,8 @@ let config = {
     }
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CopyPlugin([{ from: path.join(__dirname, '../src/assets'), to: path.join(__dirname, '../dist/assets') }])
   ]
 }
 

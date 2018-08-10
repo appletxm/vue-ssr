@@ -4,6 +4,9 @@ import App from './app/app.vue'
 import { createRouter } from 'router'
 import { createStore } from 'store'
 import { sync } from 'vuex-router-sync'
+import ElementUI from 'element-ui'
+  
+Vue.use(ElementUI)
 
 export function createApp() {
   const router = createRouter()

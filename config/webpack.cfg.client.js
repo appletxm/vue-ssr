@@ -7,7 +7,7 @@ const path = require('path')
 let config = merge(baseConfig, {
   entry: {
     app: path.resolve('./src/js/entry-client.js'),
-    vendor: ['vue']
+    vendor: ['element-ui']
   },
   
   plugins: [

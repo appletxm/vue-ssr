@@ -70,8 +70,10 @@ module.exports = {
           limit: 8192,
           context: 'client',
           name: isDevMode ? '[path][name].[ext]' : 'assets/images/[name].[ext]',
-          outputPath: isDevMode ? '' : 'assets/images/',
-          publicPath: isDevMode ? '../' : '../'
+          outputPath: ''
+          // name: isDevMode ? '[path][name].[ext]' : 'assets/images/[name].[ext]',
+          // outputPath: isDevMode ? '' : 'assets/images/',
+          // publicPath: isDevMode ? '../' : '../'
         }
       },
       {
@@ -80,9 +82,12 @@ module.exports = {
         options: {
           limit: 8192,
           context: 'client',
-          name: isDevMode ? '[path][name].[ext]' : 'assets/fonts/[name].[contenthash:7].[ext]',
-          outputPath: isDevMode ? '' : 'assets/fonts/',
-          publicPath: isDevMode ? '../' : '../'
+          name: isDevMode ? '[path][name].[ext]' : 'assets/fonts/[name].[ext]',
+          outputPath: ''
+
+          // name: isDevMode ? '[path][name].[ext]' : 'assets/fonts/[name].[ext]',
+          // outputPath: isDevMode ? '' : 'assets/fonts/',
+          // publicPath: isDevMode ? '../' : '../'
         }
       }
     ]
