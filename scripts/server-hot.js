@@ -37,14 +37,6 @@ module.exports = (app, templatePath, cb) =>{
     update()
   })
 
-  // modify client config to work with hot middleware
-  clientConfig.entry.app = ['webpack-hot-middleware/client?overlay=true', clientConfig.entry.app]
-  clientConfig.output.filename = '[name].js'
-  clientConfig.plugins.push(
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  )
-
   // dev middleware
   const clientCompiler = webpack(clientConfig)
   const devMiddleware = require('webpack-dev-middleware')(clientCompiler, {

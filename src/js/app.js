@@ -1,3 +1,4 @@
+import '../css/index.less'
 import Vue from 'vue'
 import App from './app/app.vue'
 import { createRouter } from 'router'

@@ -13,7 +13,7 @@ let renderer
 let promiseRender
 let isProd
 
-function handleError (err, req) {
+function handleError (err, req, res) {
   if (err.url) {
     res.redirect(err.url)
   } else if (err.code === 404) {
@@ -37,7 +37,7 @@ function render (req, res) {
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      return handleError(err, req)
+      return handleError(err, req, res)
     }
     res.send(html)
     if (!isProd) {

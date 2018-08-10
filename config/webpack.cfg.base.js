@@ -1,63 +1,18 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-// const autoprefixer = require('autoprefixer')
+const envCfg = require('./en.cfg.development')
+const webpackCfgFn = require('./webpack.cfg.fn')
 
-let envKeyWord = process.env.NODE_ENV
-
-module.exports = {
-  mode: envKeyWord,
+let config = {
+  mode: process.env.NODE_ENV,
   entry: {},
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/dist/',
+    publicPath: envCfg.publicPath,
     filename: 'js/[name].[chunkhash].js'
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [path.join(__dirname, '..', 'src'), path.join(__dirname, '..', 'test')]
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        include: [path.join(__dirname, '..', 'src'), path.join(__dirname, '..', 'test')]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-          context: 'client',
-          name: (envKeyWord === 'development' || envKeyWord === 'mock') ? '[path][name].[ext]' : 'assets/images/[name].[ext]',
-          outputPath: (envKeyWord === 'development' || envKeyWord === 'mock') ? '' : 'assets/images/',
-          publicPath: (envKeyWord === 'development' || envKeyWord === 'mock') ? '../' : '../'
-        }
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-          context: 'client',
-          name: (envKeyWord === 'development' || envKeyWord === 'mock') ? '[path][name].[ext]' : 'assets/fonts/[name].[hash:7].[ext]',
-          outputPath: (envKeyWord === 'development' || envKeyWord === 'mock') ? '' : 'assets/fonts/',
-          publicPath: (envKeyWord === 'development' || envKeyWord === 'mock') ? '../' : '../'
-        }
-      },
-
-      {
-        test: /\.(le|c)ss$/,
-        use: [
-          envKeyWord === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'less-loader',
-        ]
-      }
-    ]
+    rules: []
   },
   resolve: {
     extensions: ['.js', '.vue', '.less', '.css', '.html', '.json'],
@@ -77,3 +32,9 @@ module.exports = {
     new VueLoaderPlugin()
   ]
 }
+
+config = webpackCfgFn.getAllRules(config)
+config = webpackCfgFn.getLessLoaderCfg(config)
+config = webpackCfgFn.getCssMiniPlugin(config)
+
+module.exports = config

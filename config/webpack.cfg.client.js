@@ -1,16 +1,16 @@
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.cfg.base.js')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
+const webpackCfgFn = require('./webpack.cfg.fn')
 const path = require('path')
 
-module.exports = merge(baseConfig, {
+let config = merge(baseConfig, {
   entry: {
     app: path.resolve('./src/js/entry-client.js'),
     vendor: ['vue']
   },
   
   plugins: [
-    // new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") }),
     new VueSSRClientPlugin()
   ],
 
@@ -22,3 +22,7 @@ module.exports = merge(baseConfig, {
     }
   }
 })
+
+config = webpackCfgFn.getClientHotCfg(config)
+
+module.exports = config
