@@ -1,5 +1,5 @@
 <template>
-  <div class="my-app">
+  <div id="js-my-app" class="my-app">
     <navigator>
       <router-link to="/">home page</router-link>
       <router-link to="/login">login page</router-link>

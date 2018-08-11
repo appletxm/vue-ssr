@@ -8,9 +8,12 @@
   <meta name="format-detection" content="telephone=no">
   <title>vue ssr</title>
 	<link rel="icon" href="/dist/assets/images/logo.ico" type="image/png">
-	<link rel="stylesheet" href="/dist/assets/style/element-ui/index.css" type="text/css">
+	{{{renderStyles()}}}
 </head>
 <body>
 	<!--vue-ssr-outlet-->
+	{{{ getJsLibHtml() }}}
+	{{{ renderState() }}}
+	{{{ renderScripts() }}}
 </body>
 </html>

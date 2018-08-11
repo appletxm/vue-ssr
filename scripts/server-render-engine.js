@@ -23,20 +23,19 @@ let jsFiles = [
   'assets/js-libs/lodash.min.js'
 ]
 
-function decorateHtml(html){
+function getJsLibHtml(){
   let jsHtml = []
-  let splitHtml
-
-  html = html.replace(/<[^<>]+iconfont\.css"\s*>/, '')
-  html = html.replace(/<[^<>]+demo\.css"\s*>/, '')
 
   jsFiles.forEach(file => {
-    jsHtml.push('<script src="/dist/' + file + '"></script>')
+    jsHtml.push('<script src="/dist/' + file + '" charset="utf-8"></script>')
   })
 
-  splitHtml = html.split('<body>')
+  return jsHtml.join('')
+}
 
-  html = splitHtml[0] + '<body>' + jsHtml.join('') + splitHtml[1]
+function decorateHtml(html){
+  html = html.replace(/<[^<>]+iconfont\.css"\s*>/, '')
+  html = html.replace(/<[^<>]+demo\.css"\s*>/, '')
   
   return html
 }
@@ -58,7 +57,11 @@ function render (req, res) {
   const s = Date.now()
   const context = {
     title: 'Vue HN 2.0', // default title
-    url: req.url
+    url: req.url,
+    customizeEvent:()=>{
+      return ('<div>my customize html</div>')
+    },
+    getJsLibHtml: getJsLibHtml
   }
 
   res.setHeader('Content-Type', 'text/html; charset=UTF-8')
@@ -123,9 +126,11 @@ function createMyRender (bundle, options) {
 
     runInNewContext: false,
 
-    shouldPreload: shouldPreload,
+    // shouldPreload: shouldPreload,
 
-    shouldPrefetch: shouldPrefetch
+    // shouldPrefetch: shouldPrefetch,
+
+    inject: false
   }))
 }
 
