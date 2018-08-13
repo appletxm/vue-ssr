@@ -2,13 +2,12 @@ const fs = require('fs')
 const path = require('path')
 const serverAnalysReqName = require('./server-analys-req-name')
 
-
 module.exports = (req, res) => {
-  let analyRes = serverAnalysReqName(req.url)
-  let filePath = path.join(__dirname, '../dist', req.url)
+  let filePath = path.join(__dirname, '../mocks', req.originalUrl + '.json')
   let file
 
-  res.setHeader("Content-Type", analyRes.contentTyoe)
+  res.setHeader("Content-Type", 'application/json; charset=utf-8')
+
   try{
     file = fs.readFileSync(filePath, { encoding: 'utf-8'})
     res.end(file)

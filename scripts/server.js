@@ -3,7 +3,8 @@ const express = require('express')
 const app = express()
 const envCfg = require('../config/en.cfg.development.js')
 const renderEngine = require('./server-render-engine')(app)
-const assetsRouter = require('./server-assets-router')
+const assetsRouter = require('./server-router-assets')
+const apiRouter = require('./server-router-api')
 const serverInfo =
   `express/${require('express/package.json').version} ` +
   `vue-server-renderer/${require('vue-server-renderer/package.json').version}`
@@ -17,6 +18,8 @@ app.use('*', (req, res, next) =>{
 })
 
 app.use('/dist', assetsRouter)
+
+app.use('/api', apiRouter)
 
 app.use('/', renderEngine)
 

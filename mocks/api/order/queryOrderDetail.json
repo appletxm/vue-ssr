@@ -1,0 +1,80 @@
+{
+  "code": "200",
+  "message": "操作成功",
+  "detailMessage": null,
+  "data": {
+    "orderId": "1166881791599116288",
+    "orderNo": "100124848718800006",
+    "sellerId": "1166053733367480320",
+    "sellerCompanyName": "广州市一巴掌服务有限公司",
+    "userId": "722",
+    "userName": "白雪平",
+    "mobile": "13925100150",
+    "designerRemark": "快点做好，比较着急",
+    "sellerRemark": "remark4453322222",
+    "omsRemark": "modifyOmsRemar",
+    "girard": "skyTest001",
+    "itemAmount": 629.00,
+    "commissionProportion": 16.00,
+    "commissionAmount": 100.64,
+    "status": 41,
+    "offerStatus": 1,
+    "frozenStatus": 0,
+    "orderTime": 1518155665000,
+    "statusEndTime": 1519456834000,
+    "offerTime": 1518234759000,
+    "payTime": null,
+    "handOverTime": 1542086532000,
+    "shippingTime": 1518247243000,
+    "refundTime": null,
+    "collectTime": 1518163657000,
+    "allowCustomerTime": null,
+    "closeTime": null,
+    "cancelTime": null,
+    "closeReason": null,
+    "deliveryName": "奥利奥",
+    "deliveryMobile": "16812121212",
+    "provinceCode": "130000000000",
+    "cityCode": "130100000000",
+    "areaCode": "130104000000",
+    "detailed": "元帅路驸马村痞子组250号",
+    "address": "测试地址",
+    "orderItemList": [
+      {
+        "productId": "6",
+        "productName": "钉珠",
+        "itemId": "1166716203177083904",
+        "itemPrice": 125.00,
+        "remark": "钉珠钉珠钉珠钉珠钉珠"
+      },
+      {
+        "productId": "4",
+        "productName": "找料",
+        "itemId": "1166716202029941760",
+        "itemPrice": 504.00,
+        "remark": "找料找料找料找料找料"
+      }
+    ],
+    "logisticsCompany": "XXXXX",
+    "logisticsCompanyDesc": "SSSSSS",
+    "waybillNo": "xxxxxqqqqqqqqqqqqww",
+    "saleDescription": null,
+    "designerAttachments": [
+      "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png"
+    ],
+    "sellerAttachments": [
+      "dddddd",
+      "sssss",
+      "dddddd",
+      "sssss",
+      "dddddd",
+      "sssss",
+      "dddddd",
+      "sssss",
+      "dddddd",
+      "sssss",
+      "dddddd",
+      "sssss"
+    ]
+  }
+}

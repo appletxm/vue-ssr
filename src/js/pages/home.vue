@@ -60,7 +60,7 @@
       }
     },
     mounted() {
-      console.info('my home page lauched success', this)
+      // console.info('my home page lauched success', this)
     }
   }
 

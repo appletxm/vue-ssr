@@ -1,11 +1,11 @@
 <template>
   <div id="js-my-app" class="my-app">
-    <navigator>
+    <!-- <navigator>
       <router-link to="/">home page</router-link>
       <router-link to="/login">login page</router-link>
-    </navigator>
+    </navigator> -->
     
-    <h1>My SSR app</h1>
+    <!-- <h1>My SSR app</h1> -->
 
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
@@ -13,7 +13,9 @@
   </div>
 </template>
 <script>
-  export default {
-    components: {}
-  }
+
+export default {
+  components: {},
+  mounted() {}
+};
 </script>

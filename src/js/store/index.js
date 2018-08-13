@@ -7,7 +7,9 @@ Vue.use(Vuex)
 export function createStore () {
   return new Vuex.Store({
     state: {
-      items: {}
+      items: {},
+      isHandling: false,
+      currentUserInfo: {}
     },
     actions: {
       fetchItem ({ commit }, id) {
@@ -30,6 +32,10 @@ export function createStore () {
       setItem (state, items) {
         console.info('====3333===', state)
         state.items = items
+      },
+
+      setUserInfo(state, value){
+        state.currentUserInfo = value
       }
     }
   })

@@ -20,13 +20,15 @@ let config = {
     alias: {
       // 'vue$': 'vue/dist/vue.esm.js',
       'vue': 'vue/dist/vue.min.js',
-      'env.cfg': '',
+      'env.cfg': path.join(__dirname, '../config/en.cfg.development.js'),
       'pages': path.join(__dirname, '../src/js/pages/'),
       'components': path.join(__dirname, '../src/js/components/'),
       'assets': path.join(__dirname, '../src/assets/'),
       'common': path.join(__dirname, '../src/js/common/'),
+      'utils': path.join(__dirname, '../src/js/utils/'),
       'store': path.join(__dirname, '../src/js/store/'),
-      'router': path.join(__dirname, '../src/js/router/')
+      'router': path.join(__dirname, '../src/js/router/'),
+      'models': path.join(__dirname, '../src/js/models/')
     }
   },
   plugins: [

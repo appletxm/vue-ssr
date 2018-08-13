@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import { createApp } from './app'
+import auth from "common/auth"
+import axiosDecorate from 'common/axioDecorate'
+import messager from 'common/messager'
 
 // a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
   beforeRouteUpdate(to, from, next) {
+    console.info('=========beforeRouteUpdate========')
     const { asyncData } = this.$options
     if (asyncData) {
       asyncData({
@@ -18,6 +22,9 @@ Vue.mixin({
 
 const { app, router, store } = createApp()
 
+axiosDecorate.decorate()
+messager.createMessageObj(Vue)
+
 // prime the store with server-initialized state.
 // the state is determined during SSR and inlined in the page markup.
 if (window.__INITIAL_STATE__) {
@@ -25,7 +32,16 @@ if (window.__INITIAL_STATE__) {
 }
 
 router.onReady(() => {
+
+  console.info('=========onReady========')
+
+  if (auth.checkUserLogin() === false) {
+    router.push({path: '/login'})
+  }
+
   router.beforeResolve((to, from, next) => {
+    console.info('=========beforeResolve========')
+
     const matched = router.getMatchedComponents(to)
     const prevMatched = router.getMatchedComponents(from)
     let diffed = false

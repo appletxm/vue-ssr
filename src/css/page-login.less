@@ -1,0 +1,51 @@
+.page-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:extend(.position-fixed);
+
+
+  .inner{
+    width: 5rem;
+    height: 3rem;
+    border-radius: .1rem;
+    box-shadow: 0 0 .2rem 1px rgba(0,0,0, 0.1), inset 0 0 .05rem rgba(0,0,0,0.1);
+    background-color: rgba(10,10,10,0.05);
+    border: 1px solid #f0f0f0;
+    display: inline-block;
+
+    p{
+      width: 80%;
+      margin: .2rem auto;
+  
+      button{
+        width: 2rem;
+      }
+    }
+  }
+
+  dl{
+    display: block;
+    line-height: .4rem;
+    width: 80%;
+    margin: .2rem auto 0 auto;
+
+    dt{
+      display: block;
+    }
+
+    dd{
+      display: block;
+      position: relative;
+      height: .4rem;
+    }
+    
+    input{
+      background: #fff;
+      &:extend(.position-absolue);
+      border: 1px solid #eee;
+      text-indent: .1rem;
+    }
+  }
+ 
+}
