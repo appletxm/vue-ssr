@@ -9,7 +9,8 @@ export function createStore () {
     state: {
       items: {},
       isHandling: false,
-      currentUserInfo: {}
+      currentUserInfo: {},
+      userList: []
     },
     actions: {
       fetchItem ({ commit }, id) {
@@ -25,7 +26,11 @@ export function createStore () {
             no: '1',
             name: '2222'
           }])
-        }, 1000)
+        }, 5000)
+      },
+
+      getUserList({ commit }, userList){
+        commit('setUserList', userList)
       }
     },
     mutations: {
@@ -36,6 +41,10 @@ export function createStore () {
 
       setUserInfo(state, value){
         state.currentUserInfo = value
+      },
+
+      setUserList(state, value){
+        state.userList = value
       }
     }
   })

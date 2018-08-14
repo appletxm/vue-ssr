@@ -1,6 +1,5 @@
 const fs = require('fs')
 const path = require('path')
-const serverAnalysReqName = require('./server-analys-req-name')
 
 module.exports = (req, res) => {
   let filePath = path.join(__dirname, '../mocks', req.originalUrl + '.json')

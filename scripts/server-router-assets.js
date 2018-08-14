@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const serverAnalysReqName = require('./server-analys-req-name')
 
 module.exports = (req, res) => {
   let analyRes = serverAnalysReqName(req.url)
