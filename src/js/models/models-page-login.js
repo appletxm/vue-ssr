@@ -1,7 +1,7 @@
 import axios from 'axios'
-import apiUrls from 'common/apiUrls'
+import apiUrls from 'common/api-urls'
 import auth from 'common/auth'
-import axioDecorate from 'common/axioDecorate'
+import axioDecorate from 'common/axio-decorate'
 import { storage } from 'common/storage'
 
 export default {

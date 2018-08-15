@@ -22,11 +22,22 @@
 import List from 'components/list.vue'
 import Item from 'components/item.vue'
 import Tab from 'components/tab.vue'
+// import apiUrls from 'common/api-urls'
+import axios from 'axios'
 
 export default {
-  asyncData({store,route}) {
+  asyncData({store,route, userToken}) {
     // 触发 action 后，会返回 Promise
-    return store.dispatch('getUserList')
+    // if(!userToken){
+    //   return store.dispatch('getUserList', [])
+    // } else {
+    //   return {
+    //     storeDispatchKey: 'getUserList',
+    //     url: apiUrls.getUserList
+    //   }
+    // } 
+
+    return store.dispatch('getUserList', [])
   },
   data() {
     return {
@@ -41,18 +52,16 @@ export default {
   },
   watch: {
     'toggle' (val) {
-      console.info('=======', val)
+      console.info('toggle:', val)
     }
   },
   methods: {
     open2() {
-      console.info('--------11----------')
-      alert('4455555555444')
+      alert('my test click')
     },
 
     open3() {
-      console.info('------------------')
-      alert('88888')
+      alert('my test click 3')
     },
 
     handleClose(done) {

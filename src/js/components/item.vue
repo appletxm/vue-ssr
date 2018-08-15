@@ -1,5 +1,7 @@
 <template>
-  <div>{{ items }}</div>
+  <ul>
+    <li>{{items}}</li>
+  </ul>
 </template>
 
 <script>
@@ -11,7 +13,7 @@ export default {
   computed: {
     // 从 store 的 state 对象中的获取 item。
     items () {
-      return this.$store.state.items[this.$route.params.id]
+      return this.$store.state.items
     }
   }
 }

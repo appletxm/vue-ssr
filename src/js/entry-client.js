@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import { createApp } from './app'
 import auth from "common/auth"
-import axiosDecorate from 'common/axioDecorate'
 import messager from 'common/messager'
+import axioDecorate from 'common/axio-decorate'
 
 // a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
@@ -22,7 +22,6 @@ Vue.mixin({
 
 const { app, router, store } = createApp()
 
-axiosDecorate.decorate()
 messager.createMessageObj(Vue)
 
 // prime the store with server-initialized state.
@@ -30,6 +29,8 @@ messager.createMessageObj(Vue)
 if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__)
 }
+
+axioDecorate.decorate()
 
 router.onReady(() => {
 

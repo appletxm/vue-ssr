@@ -18,6 +18,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "cookie-parser": "^1.4.3",
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.5",
     "express": "^4.16.3",
@@ -67,10 +68,10 @@
   },
   "keywords": [
     "node js",
-    "webpack",
+    "webpack 4",
     "vuejs",
     "vuejs server side render",
-    "koa"
+    "express"
   ],
   "author": "applexm"
 }

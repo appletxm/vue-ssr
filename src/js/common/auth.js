@@ -27,8 +27,13 @@ export default {
   },
 
   getTokenFromCookie() {
-    let token = uiUtils.uiCookie.get(ACCESS_TOKEN)
-    // let token = storage.get(ACCESS_TOKEN)
+    let token
+    if(window) {
+      token = ''
+    } else {
+      // let token = storage.get(ACCESS_TOKEN)
+      token = uiUtils.uiCookie.get(ACCESS_TOKEN)
+    }
     return token
   },
 

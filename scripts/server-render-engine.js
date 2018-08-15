@@ -61,7 +61,8 @@ function render (req, res) {
     customizeEvent:()=>{
       return ('<div>my customize html</div>')
     },
-    getJsLibHtml: getJsLibHtml
+    getJsLibHtml: getJsLibHtml,
+    userToken: (req.cookies || {})['designerLoginToken']
   }
 
   res.setHeader('Content-Type', 'text/html; charset=UTF-8')

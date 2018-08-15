@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export function createStore () {
   return new Vuex.Store({
     state: {
-      items: {},
+      items: [],
       isHandling: false,
       currentUserInfo: {},
       userList: []
@@ -23,19 +23,14 @@ export function createStore () {
         setTimeout(()=>{
           commit('setItem', [
             {
-            no: '1',
-            name: '2222'
+            no: 'item001',
+            name: 'item0001name'
           }])
         }, 5000)
-      },
-
-      getUserList({ commit }, userList){
-        commit('setUserList', userList)
       }
     },
     mutations: {
       setItem (state, items) {
-        console.info('====3333===', state)
         state.items = items
       },
 
@@ -44,6 +39,7 @@ export function createStore () {
       },
 
       setUserList(state, value){
+        console.info('==========3333==========', value)
         state.userList = value
       }
     }

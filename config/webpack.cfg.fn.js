@@ -71,9 +71,6 @@ module.exports = {
           context: 'client',
           name: isDevMode ? '[path][name].[ext]' : 'assets/images/[name].[ext]',
           outputPath: ''
-          // name: isDevMode ? '[path][name].[ext]' : 'assets/images/[name].[ext]',
-          // outputPath: isDevMode ? '' : 'assets/images/',
-          // publicPath: isDevMode ? '../' : '../'
         }
       },
       {
@@ -84,10 +81,6 @@ module.exports = {
           context: 'client',
           name: isDevMode ? '[path][name].[ext]' : 'assets/fonts/[name].[ext]',
           outputPath: ''
-
-          // name: isDevMode ? '[path][name].[ext]' : 'assets/fonts/[name].[ext]',
-          // outputPath: isDevMode ? '' : 'assets/fonts/',
-          // publicPath: isDevMode ? '../' : '../'
         }
       }
     ]

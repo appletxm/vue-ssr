@@ -11,8 +11,18 @@ function matchContentType (extName) {
       return 'image/jpeg'
     case 'png':
       return 'image/png'
-    case 'gif':
-      return 'image/gif'
+    case 'woff':
+      return 'application/font-woff'
+    case 'woff2':
+      return 'application/font-woff2'
+    case 'ttf':
+      return 'font/truetype'
+    // case 'eot':
+    //   return 'application/vnd.ms-fontobject'
+    // case 'otf':
+    //   return 'font/opentype'
+    // case 'svg':
+    //   return 'image/svg+xml'
     default:
       return 'text/plain; charset=utf-8'
   }

@@ -6,8 +6,8 @@ const path = require('path')
 
 let config = merge(baseConfig, {
   entry: {
-    app: path.resolve('./src/js/entry-client.js'),
-    vendor: ['element-ui', 'axios']
+    app: path.resolve('./src/js/entry-client.js')
+    // vendor: ['element-ui', 'axios']
   },
   
   plugins: [
@@ -16,9 +16,20 @@ let config = merge(baseConfig, {
 
   optimization: {
     splitChunks: {
-      name: 'vender', 
-      filename: '[name].[chunkhash].js',
-      minChunks: 2
+      chunks: 'all',
+
+      cacheGroups: {
+        commons: {
+          test: /common|components|utils/,
+          name: "commons",
+          chunks: "all"
+        },
+        venders: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
     }
   }
 })

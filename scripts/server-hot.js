@@ -5,6 +5,7 @@ const webpack = require('webpack')
 const chokidar = require('chokidar')
 const clientConfig = require('../config/webpack.cfg.client')
 const serverConfig = require('../config/webpack.cfg.server')
+// const ProgressPlugin = require('webpack/lib/ProgressPlugin')
 
 const readFile = (fs, file) => {
   try {
@@ -43,16 +44,19 @@ module.exports = (app, templatePath, cb) =>{
     publicPath: clientConfig.output.publicPath,
     noInfo: true
   })
+
+  // clientCompiler.apply(new ProgressPlugin((percentage, msg) => {
+  //   console.log('###############################', (percentage * 100) + '%', msg);
+  // }))
+
   app.use(devMiddleware)
+
   clientCompiler.plugin('done', stats => {
     stats = stats.toJson()
     stats.errors.forEach(err => console.error(err))
     stats.warnings.forEach(err => console.warn(err))
     if (stats.errors.length) return
-    clientManifest = JSON.parse(readFile(
-      devMiddleware.fileSystem,
-      'vue-ssr-client-manifest.json'
-    ))
+    clientManifest = JSON.parse(readFile(devMiddleware.fileSystem, 'vue-ssr-client-manifest.json'))
     update()
   })
 

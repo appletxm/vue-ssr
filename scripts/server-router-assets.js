@@ -8,8 +8,13 @@ module.exports = (req, res) => {
   let file
 
   res.setHeader("Content-Type", analyRes.contentTyoe)
+
   try{
-    file = fs.readFileSync(filePath, { encoding: 'utf-8'})
+    if(analyRes.extName === 'woff' || analyRes.extName === 'ttf') {
+      file = fs.readFileSync(filePath)
+    } else {
+      file = fs.readFileSync(filePath, { encoding: 'utf-8'})
+    }
     res.end(file)
   }catch(err){
     res.status(404).end(`文件${filePath}找不到`)
