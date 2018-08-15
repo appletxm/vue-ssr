@@ -2,18 +2,24 @@ const mongoose = require('mongoose')
 const DB_URL = 'mongodb://localhost:27017/test'
 
 let db
+let createdMongoose
 
 function connectDb (url = DB_URL) {
   let promise
-  
+
   promise = new Promise((resolve, reject) => {
-    db = mongoose.connect(url, {useNewUrlParser: true}, (err) => {
-      if (err) {
-        reject(new Error('connect fialed.....'))
-      }else {
-        resolve(mongoose)
-      }
-    })
+    if (createdMongoose) {
+      resolve(createdMongoose)
+    } else {
+      db = mongoose.connect(url, {useNewUrlParser: true}, (err) => {
+        if (err) {
+          reject(new Error('connect fialed.....'))
+        }else {
+          createdMongoose = mongoose
+          resolve(mongoose)
+        }
+      })
+    }
   })
 
   mongoose.connection.on('connected', () => {
@@ -29,7 +35,7 @@ function connectDb (url = DB_URL) {
   return promise
 }
 
-function closeDb(){
+function closeDb () {
   console.info('=========closeDb=======')
   db.close()
 }

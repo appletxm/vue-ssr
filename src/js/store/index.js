@@ -39,7 +39,6 @@ export function createStore () {
       },
 
       setUserList(state, value){
-        console.info('==========3333==========', value)
         state.userList = value
       }
     }

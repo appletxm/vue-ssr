@@ -1,8 +1,6 @@
 const db = require('./db')
 const user = require('./model-user')
 
-// let mongoose
-
 // db.connectDb().then((res) => {
 //   mongoose = res
 //   user.createUserModel(mongoose)
@@ -17,3 +15,4 @@ const user = require('./model-user')
 // })
 
 module.exports = {...db, ...user}
+

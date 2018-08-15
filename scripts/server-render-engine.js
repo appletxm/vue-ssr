@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const LRU = require('lru-cache')
+const serverData = require('./server-data')
 const setupDevServer = require('./server-hot')
 const { createBundleRenderer } = require('vue-server-renderer')
 const resolve = file => path.resolve(__dirname, file)
@@ -62,7 +63,12 @@ function render (req, res) {
       return ('<div>my customize html</div>')
     },
     getJsLibHtml: getJsLibHtml,
-    userToken: (req.cookies || {})['designerLoginToken']
+    userToken: (req.cookies || {})['designerLoginToken'],
+    getDataFromServer: (apiUrls) =>{
+      return new Promise((resolve) => {
+        serverData.getAllData(apiUrls, resolve)
+      })
+    }
   }
 
   res.setHeader('Content-Type', 'text/html; charset=UTF-8')

@@ -4,16 +4,18 @@ function createUserModel (mongoose) {
   let Schema
   let UserSchema
 
-  Schema = mongoose.Schema
+  if (!UserModel) {
+    Schema = mongoose.Schema
 
-  UserSchema = new Schema({
-    userName: {type: String, index: true},
-    userPwd: {type: String},
-    userAge: {type: Number},
-    logindate: { type: Date, default: Date.now}
-  })
+    UserSchema = new Schema({
+      userName: {type: String, index: true},
+      userPwd: {type: String},
+      userAge: {type: Number},
+      logindate: { type: Date, default: Date.now}
+    })
 
-  UserModel = mongoose.model('User', UserSchema)
+    UserModel = mongoose.model('User', UserSchema)
+  }
 }
 
 function insert () {

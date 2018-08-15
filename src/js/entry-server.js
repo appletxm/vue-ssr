@@ -28,14 +28,15 @@ export default (context) => {
       Promise.all(matchedComponents.map(({ asyncData }) => {
         return asyncData && asyncData({store, route: router.currentRoute, userToken: context.userToken})
       })).then((res) => {
-        console.info('####', res)
-
-        isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
-
-        context.state = store.state
-
-        resolve(app)
-
+        return context.getDataFromServer(res)
+      }).then(serverDataSet => {
+        serverDataSet.forEach(dataObj => {
+          store.commit(dataObj.storeCommitKey, dataObj.data)
+          isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
+          context.state = store.state
+          
+          resolve(app)
+        })
       }).catch(reject)
     }, reject)
   })
