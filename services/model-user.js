@@ -67,12 +67,12 @@ function queryByCondition () {
 }
 
 function queryAll () {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     UserModel.find((err, res) => {
       if (err) {
-        resolve([])
-      }else {
-        resolve(res)
+        reject({code: '500', message: '系统错误'})
+      } else {
+        resolve({code: '200', data: res})
       }
     })
   })
@@ -90,37 +90,36 @@ function del () {
   })
 }
 
-function login(userName, passWord) {
-  let wherestr = {'userName': userName, 'passWord': passWord}
-
-  console.info('====login====', userName, passWord)
+function login(params) {
+  let wherestr = {'userName': params.userName, 'userPwd': params.passWord}
 
   return new Promise((resolve, reject) => {
     UserModel.find(wherestr, (err, res) => {
       if (err) {
-        reject({code: 500, message: '不正确的用户名或者密码'})
+        reject({code: '500', message: '系统错误'})
       }else {
-        resolve({codde: 200, data: res})
+        if(res.length > 0) {
+          resolve({code: '200', data: '18814184088a582d929-e824-4abc-862b-6952294c0379', userInfo: JSON.parse(JSON.stringify(res[0]))})
+        } else {
+          reject({code: '401', message: '你还不是我们的用户'})
+        }
       }
     })
   })
 }
 
-function getCurrentUserInfo(userId){
-  let wherestr = {'_id': userId}
-
-  console.info('====getCurrentUserInfo====', userId)
+function getCurrentUserInfo(params){
+  let wherestr = {'_id': params.userId}
 
   return new Promise((resolve, reject) => {
     UserModel.find(wherestr, (err, res) => {
       if (err) {
-        reject({code: 500, message: '找不到你要查找的用户信息'})
+        reject({code: '500', message: '找不到你要查找的用户信息'})
       }else {
-        currentUser = userName
-        resolve({codde: 200, data: res})
+        resolve({code: '200', data: res[0]})
       }
     })
   })
 }
 
-module.exports = {createUserModel, insert, update, queryByCondition, queryAll, login}
+module.exports = {createUserModel, insert, update, queryByCondition, queryAll, login, getCurrentUserInfo}

@@ -14,11 +14,11 @@ export default {
     axioDecorate.setHttpHeaderCookie()
   },
 
-  getCurrentUserInfo() {
-    return axios.get(apiUrls.getCurrentUserInfo)
+  getCurrentUserInfo(params) {
+    return axios.get(apiUrls.getCurrentUserInfo, {params: params})
   },
 
-  setUserInfoToStorage(res) {
-    storage.setUserInfoToStorage(res.data)
+  setUserInfoToStorage(data) {
+    storage.setUserInfoToStorage(data)
   }
 }

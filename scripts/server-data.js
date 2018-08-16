@@ -16,13 +16,15 @@ module.exports = {
     
   },
   '/user/getUserList'(api) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       user.connectDb().then((mongoose) => {
         user.createUserModel(mongoose)
         return user.queryAll()
       }).then(res => {
-        api['data'] = res
+        api['data'] = res.data
         resolve(res)
+      }).catch(err => {
+        reject(err)
       })
     })
   }

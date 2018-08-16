@@ -1,6 +1,6 @@
 <template>
 <div class="page-home">
-  <h1>this is the home page 测试一下中文</h1>
+  <!-- <h1>this is the home page 测试一下中文</h1>
   <tab></tab>
   <list></list>
   <item></item>
@@ -14,7 +14,11 @@
       <el-button @click="dialogVisible = false">取 消</el-button>
       <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
     </span>
-  </el-dialog>
+  </el-dialog> -->
+
+  <h1 class="user-info">
+    name:{{userInfo.userName}} <br/> loginDate: {{userInfo.logindate}}
+  </h1>
 
   <el-table :data="userList" style="width: 100%">
     <el-table-column v-for="(column, index) in columns" :key="index" :prop="column.field" :label="column.label">
@@ -38,11 +42,23 @@ export default {
     userToken
   }) {
     if (!userToken) {
+      // debugger
+      // let promise = models.getUserList()
+      // console.info(promise)
+      // promise.then(res => {
+      //    debugger
+      //   return store.commit('setUserList', res.data)
+      // }).cath(err => {
+      //   return store.commit('setUserList', [])
+      // })
+
       models.getUserList().then(res => {
-        return store.commit('setUserList', [])
-      }).cath(err => {
+        return store.commit('setUserList', res.data)
+      }).catch(err => {
         return store.commit('setUserList', [])
       })
+
+      return false
     } else {
       return ({
         storeCommitKey: 'setUserList',
@@ -53,7 +69,8 @@ export default {
   data() {
     return {
       dialogVisible: false,
-      columns
+      columns,
+      userInfo: {}
     }
   },
   computed: {
@@ -94,6 +111,7 @@ export default {
   },
   mounted() {
     // console.info('my home page lauched success', this)
+    this.userInfo = models.getUserInfo()
   }
 }
 </script>

@@ -36,7 +36,7 @@ export default {
     doLogin() {
       let params = {
         userName: this.userName,
-        password: this.password
+        passWord: this.password
       }
 
       if (!this.userName || !this.password) {
@@ -46,13 +46,13 @@ export default {
         models.doLogin(params).then(res => {
           if(res.code === '200'){
             models.setTokenToCookie(res)
-            return models.getCurrentUserInfo()
+            return models.getCurrentUserInfo({userId: res['userInfo']['_id']})
           } else {
             this.loginFail(err)
           }
         }).then(res => {
           if(res.code === '200'){
-            models.setUserInfoToStorage(res)
+            models.setUserInfoToStorage(res.data)
             this.$router.push({path: '/'})
           } else {
             this.loginFail(err)
@@ -66,7 +66,7 @@ export default {
     loginFail(err){
       this.isLoading = false
 
-      message.showMsg('error', err.errorMessage)
+      message.showMsg('error', err.message)
       console.info('[doLogin error]', err)
     }
   },

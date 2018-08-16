@@ -7,6 +7,7 @@ const renderEngine = require('./server-render-engine')(app)
 const assetsRouter = require('./server-router-assets')
 const apiRouter = require('./server-router-api')
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 const serverInfo = `express/${require('express/package.json').version} ` + `vue-server-renderer/${require('vue-server-renderer/package.json').version}`
 
 console.info('****current env is ',process.env.NODE_ENV, '****')
@@ -22,6 +23,11 @@ app.use('*', (req, res, next) =>{
 })
 
 app.use('/dist', assetsRouter)
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 
 app.use('/api', apiRouter)
 
