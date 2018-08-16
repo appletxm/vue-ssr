@@ -72,7 +72,8 @@
     "webpack 4",
     "vuejs",
     "vuejs server side render",
-    "express"
+    "express",
+    "mongoose"
   ],
   "author": "applexm"
 }
