@@ -34,14 +34,14 @@ axioDecorate.decorate()
 
 router.onReady(() => {
 
-  console.info('=========onReady========')
+  console.info('=========onReady client========')
 
   if (auth.checkUserLogin() === false) {
     router.push({path: '/login'})
   }
 
   router.beforeResolve((to, from, next) => {
-    console.info('=========beforeResolve========')
+    console.info('=========beforeResolve client========')
 
     const matched = router.getMatchedComponents(to)
     const prevMatched = router.getMatchedComponents(from)

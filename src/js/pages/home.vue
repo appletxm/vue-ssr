@@ -37,7 +37,6 @@ export default {
     route,
     userToken
   }) {
-    // 触发 action 后，会返回 Promise
     if (!userToken) {
       models.getUserList().then(res => {
         return store.commit('setUserList', [])

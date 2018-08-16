@@ -90,4 +90,37 @@ function del () {
   })
 }
 
-module.exports = {createUserModel, insert, update, queryByCondition, queryAll}
+function login(userName, passWord) {
+  let wherestr = {'userName': userName, 'passWord': passWord}
+
+  console.info('====login====', userName, passWord)
+
+  return new Promise((resolve, reject) => {
+    UserModel.find(wherestr, (err, res) => {
+      if (err) {
+        reject({code: 500, message: '不正确的用户名或者密码'})
+      }else {
+        resolve({codde: 200, data: res})
+      }
+    })
+  })
+}
+
+function getCurrentUserInfo(userId){
+  let wherestr = {'_id': userId}
+
+  console.info('====getCurrentUserInfo====', userId)
+
+  return new Promise((resolve, reject) => {
+    UserModel.find(wherestr, (err, res) => {
+      if (err) {
+        reject({code: 500, message: '找不到你要查找的用户信息'})
+      }else {
+        currentUser = userName
+        resolve({codde: 200, data: res})
+      }
+    })
+  })
+}
+
+module.exports = {createUserModel, insert, update, queryByCondition, queryAll, login}
