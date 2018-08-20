@@ -16,3 +16,11 @@ use default config
 
 ```
 
+###docker 相关
+```
+docker default host 192.168.99.100
+
+boot2docker user/pass
+docker/tcuser
+```
+

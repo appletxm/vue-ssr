@@ -73,7 +73,8 @@
     "vuejs",
     "vuejs server side render",
     "express",
-    "mongoose"
+    "mongoose",
+    "docker"
   ],
   "author": "applexm"
 }
